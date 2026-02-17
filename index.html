@@ -8,10 +8,11 @@
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      /* Changed to a lighter background so black text is visible */
+      background: linear-gradient(135deg, #ffebee, #f3e5f5, #e1f5fe);
       font-family: Arial, sans-serif;
       overflow: hidden;
-      color: white;
+      color: #000000; /* Set all text to Black */
       text-align: center;
     }
 
@@ -34,6 +35,7 @@
     h1 {
       font-size: 2.8em;
       margin-bottom: 15px;
+      color: #000000; /* Force Heading to Black */
     }
 
     p {
@@ -41,6 +43,7 @@
       padding: 0 20px;
       font-size: 1.2em;
       line-height: 1.6;
+      color: #000000; /* Force Paragraph to Black */
     }
 
     button {
@@ -50,9 +53,10 @@
       border: none;
       border-radius: 30px;
       background: #ff4da6;
-      color: white;
+      color: white; /* Button text stays white for contrast */
       cursor: pointer;
       transition: 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
 
     button:hover {
