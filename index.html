@@ -22,7 +22,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      -webkit-tap-highlight-color: transparent;
     }
 
     .screen {
@@ -33,7 +32,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 1s ease-in-out;
       padding: 20px;
       box-sizing: border-box;
     }
@@ -43,7 +42,7 @@
       backdrop-filter: blur(25px);
       -webkit-backdrop-filter: blur(25px);
       border-radius: 40px;
-      padding: 30px 20px;
+      padding: 35px 20px;
       border: 1px solid rgba(255, 255, 255, 0.5);
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
       width: 90%;
@@ -52,46 +51,42 @@
       text-align: center;
     }
 
-    .hidden { opacity: 0; transform: scale(0.9) translateY(20px); pointer-events: none; }
-    .visible { opacity: 1; transform: scale(1) translateY(0); pointer-events: auto; }
+    .hidden { opacity: 0; transform: translateY(30px); pointer-events: none; }
+    .visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
 
-    h1 { font-size: 2.2em; margin-bottom: 10px; color: var(--deep-rose); }
+    h1 { font-size: 2.2em; color: var(--deep-rose); margin-bottom: 15px; }
     
     .typewriter {
       font-size: 1.15em;
       line-height: 1.6;
       color: #000;
       font-weight: 600;
-      min-height: 240px;
+      min-height: 220px;
     }
 
     .heart-container {
-      width: 120px;
-      height: 120px;
-      margin: 0 auto 20px auto;
-      filter: drop-shadow(0 0 10px rgba(255, 0, 85, 0.3));
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 20px;
     }
 
     .heart-svg {
       fill: #ff0055;
-      animation: heartbeat 1.2s infinite ease-in-out;
+      animation: heartbeat 1.2s infinite;
     }
 
     @keyframes heartbeat {
-      0% { transform: scale(1); }
-      15% { transform: scale(1.25); }
-      30% { transform: scale(1); }
-      45% { transform: scale(1.15); }
-      60% { transform: scale(1); }
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
     }
 
     button {
       margin-top: 20px;
-      padding: 16px 45px;
-      font-size: 17px;
+      padding: 18px 50px;
+      font-size: 18px;
       border: none;
       border-radius: 100px;
-      background: linear-gradient(45deg, #ff0055, #ff758c);
+      background: #ff0055;
       color: white;
       font-weight: bold;
       box-shadow: 0 10px 25px rgba(255, 0, 85, 0.3);
@@ -102,13 +97,13 @@
       position: absolute;
       z-index: 5;
       pointer-events: none;
-      animation: fallVar 7s linear infinite;
+      animation: fall 7s linear infinite;
     }
 
-    @keyframes fallVar {
+    @keyframes fall {
       0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
       20% { opacity: 1; }
-      100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
     }
   </style>
 </head>
@@ -116,9 +111,14 @@
 
 <div class="screen visible" id="screen1">
   <div class="glass-card">
-    <h1>Hey Manuuuu ❤️</h1>
-    <p style="font-weight: 600;">Mn oyata podi deyak haduwa. Heeeee</p>
-    <button onclick="showScreen(2)">Open My Heart 💖</button>
+    <div class="heart-container">
+        <svg class="heart-svg" viewBox="0 0 32 32">
+            <path d="M16 28.21s-1.49-1.39-4.22-3.93C7.54 20.35 3 16.2 3 11.05 3 7.16 6.04 4 10 4c2.5 0 4.17 1.25 6 3.12C17.83 5.25 19.5 4 22 4c3.96 0 7 3.16 7 7.05 0 5.15-4.54 9.3-8.78 13.23-2.73 2.54-4.22 3.93-4.22 3.93z"/>
+        </svg>
+    </div>
+    <h1>For My Manuu ❤️</h1>
+    <p style="font-weight: 600;">Tap the heart to begin...</p>
+    <button onclick="startEverything()">Click Here 💖</button>
   </div>
 </div>
 
@@ -126,25 +126,25 @@
   <div class="glass-card">
     <h1 id="title2"></h1>
     <div id="textDest" class="typewriter"></div>
-    <button id="nextBtn" style="display:none;" onclick="showScreen(3)">Something More... ✨</button>
+    <button id="nextBtn" style="display:none;" onclick="showScreen(3)">Keep going... ✨</button>
   </div>
 </div>
 
 <div class="screen hidden" id="screen3">
   <div class="glass-card">
     <div class="heart-container">
-        <svg class="heart-svg" viewBox="0 0 32 32" width="100%" height="100%">
+        <svg class="heart-svg" viewBox="0 0 32 32">
             <path d="M16 28.21s-1.49-1.39-4.22-3.93C7.54 20.35 3 16.2 3 11.05 3 7.16 6.04 4 10 4c2.5 0 4.17 1.25 6 3.12C17.83 5.25 19.5 4 22 4c3.96 0 7 3.16 7 7.05 0 5.15-4.54 9.3-8.78 13.23-2.73 2.54-4.22 3.93-4.22 3.93z"/>
         </svg>
     </div>
     <h1 style="font-size: 1.8em;">This is for you ❤️</h1>
     <p style="font-weight: 600; color: #333;">Every second with you is a gift I promise to cherish forever.</p>
-    <p style="font-size: 1em; margin-top: 15px; color: var(--deep-rose); font-style: italic;">I love you, Manuu. Umma!</p>
+    <p style="font-size: 1.1em; margin-top: 15px; color: var(--deep-rose); font-style: italic;">I love you, Manuu. Umma!</p>
   </div>
 </div>
 
-<audio id="bgMusic" loop playsinline>
-  <source src="https://www.mboxdrive.com/Ed%20Sheeran%20-%20Perfect%20(Official%20Music%20Video).mp3" type="audio/mpeg">
+<audio id="bgMusic" loop preload="auto">
+  <source src="https://cdn.pixabay.com/audio/2022/11/22/audio_104a37c041.mp3" type="audio/mpeg">
 </audio>
 
 <script>
@@ -159,16 +159,22 @@ I’ll always choose mage umma katee...
 
 Always. Forever. Until the End. 💖`;
 
+  const music = document.getElementById("bgMusic");
+
+  function startEverything() {
+    // 1. Start music immediately on tap
+    music.play().catch(e => console.log("Audio failed to start"));
+    
+    // 2. Move to Screen 2
+    showScreen(2);
+  }
+
   function showScreen(num) {
     document.querySelectorAll('.screen').forEach(s => s.className = 'screen hidden');
     const target = document.getElementById('screen' + num);
     target.className = 'screen visible';
 
     if (num === 2) {
-      const music = document.getElementById("bgMusic");
-      // Force play for iPhone on button tap
-      music.play();
-      
       document.getElementById("title2").innerHTML = "I Love You ❤️";
       typeWriter(romanticText, 0);
     }
@@ -176,7 +182,7 @@ Always. Forever. Until the End. 💖`;
 
   function typeWriter(text, i) {
     if (i < text.length) {
-      document.getElementById("textDest").innerHTML = text.substring(0, i + 1) + '<span></span>';
+      document.getElementById("textDest").innerHTML = text.substring(0, i + 1) + '<span>|</span>';
       setTimeout(() => typeWriter(text, i + 1), 60);
     } else {
       document.getElementById("nextBtn").style.display = "inline-block";
@@ -184,7 +190,7 @@ Always. Forever. Until the End. 💖`;
   }
 
   function spawnFlowers() {
-    const symbols = ["🌸", "💗", "🌺", "🌹", "✨", "🦋"];
+    const symbols = ["🌸", "💗", "🌺", "🌹", "✨"];
     setInterval(() => {
       const el = document.createElement("div");
       el.classList.add("flower");
@@ -193,7 +199,7 @@ Always. Forever. Until the End. 💖`;
       el.style.fontSize = Math.random() * 20 + 15 + "px";
       document.body.appendChild(el);
       setTimeout(() => el.remove(), 7000);
-    }, 300);
+    }, 400);
   }
 
   spawnFlowers();
