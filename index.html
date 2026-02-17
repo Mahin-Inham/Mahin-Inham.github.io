@@ -8,10 +8,11 @@
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #ffebee, #f3e5f5, #e1f5fe);
-      font-family: Arial, sans-serif;
+      /* Soft Romantic Pink Gradient */
+      background: linear-gradient(135deg, #fce4ec, #f8bbd0, #fce4ec);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       overflow: hidden;
-      color: #000000;
+      color: #333; /* Dark grey/black for clarity */
       text-align: center;
     }
 
@@ -23,7 +24,18 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      transition: opacity 1.5s ease;
+      transition: opacity 1.2s ease;
+    }
+
+    /* Glass Effect Card */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      padding: 40px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      box-shadow: 0 8px 32px rgba(255, 182, 193, 0.3);
+      max-width: 85%;
     }
 
     #secondScreen {
@@ -32,47 +44,50 @@
     }
 
     h1 {
-      font-size: 2.8em;
+      font-size: 2.5em;
       margin-bottom: 15px;
-      color: #000000;
+      color: #d81b60; /* Deep pink for headings */
     }
 
     p {
-      max-width: 600px;
-      padding: 0 20px;
+      max-width: 500px;
       font-size: 1.2em;
       line-height: 1.6;
-      color: #000000;
-      white-space: pre-line; /* Keeps your spacing exactly as you wrote it */
+      color: #444;
+      white-space: pre-line;
+      font-weight: 500;
     }
 
     button {
       margin-top: 25px;
-      padding: 12px 30px;
-      font-size: 16px;
+      padding: 15px 40px;
+      font-size: 18px;
       border: none;
-      border-radius: 30px;
-      background: #ff4da6;
+      border-radius: 50px;
+      background: #ff4081;
       color: white;
+      font-weight: bold;
       cursor: pointer;
-      transition: 0.3s;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, background 0.3s;
+      box-shadow: 0 4px 15px rgba(255, 64, 129, 0.4);
     }
 
     button:hover {
-      background: #ff1a8c;
+      background: #f50057;
+      transform: scale(1.05);
     }
 
     .heart {
       position: absolute;
-      color: #ff4da6;
+      color: #ff80ab;
       animation: float 6s linear infinite;
       z-index: -1;
+      filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
     }
 
     @keyframes float {
-      from { transform: translateY(100vh); opacity: 1; }
-      to { transform: translateY(-10vh); opacity: 0; }
+      from { transform: translateY(110vh) rotate(0deg); opacity: 1; }
+      to { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
     }
   </style>
 </head>
@@ -80,25 +95,29 @@
 <body>
 
 <div class="screen" id="firstScreen">
-  <h1>Hey Manuuuu ❤️</h1>
-  <p>Mn oyata podi deyak haduwa. Heeeee</p>
-  <button onclick="startLove()">Tap Here 💖</button>
+  <div class="glass-card">
+    <h1>Hey Manuuuu ❤️</h1>
+    <p>Mn oyata podi deyak haduwa. Heeeee</p>
+    <button onclick="startLove()">Tap Here 💖</button>
+  </div>
 </div>
 
 <div class="screen" id="secondScreen">
-  <h1>I Luv U So Much Umma Kateeee ❤️</h1>
-  <p>
-    You are my GF
-    You are my Best Friend
-    You are my Wife
-    My Woman  
-    My favorite person in the whole world.  
+  <div class="glass-card">
+    <h1>I Luv U So Much Umma Kateeee ❤️</h1>
+    <p>
+      You are my GF
+      You are my Best Friend
+      You are my Wife
+      My Woman  
+      My favorite person in the whole world.  
 
-    No matter what happens,  
-    I’ll always choose mage umma katee...  
+      No matter what happens,  
+      I’ll always choose mage umma katee...  
 
-    Always. Forever. Until the End. 💖
-  </p>
+      Always. Forever. Until the End. 💖
+    </p>
+  </div>
 </div>
 
 <audio id="bgMusic">
@@ -112,10 +131,9 @@
       document.getElementById("firstScreen").style.display = "none";
       document.getElementById("secondScreen").style.opacity = "1";
       document.getElementById("secondScreen").style.pointerEvents = "auto";
-    }, 1500);
+    }, 1200);
 
     document.getElementById("bgMusic").play();
-
     createHearts();
   }
 
@@ -125,13 +143,10 @@
       heart.classList.add("heart");
       heart.innerHTML = "❤️";
       heart.style.left = Math.random() * 100 + "vw";
-      heart.style.fontSize = Math.random() * 20 + 20 + "px";
+      heart.style.fontSize = Math.random() * 20 + 15 + "px";
       document.body.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 6000);
-    }, 300);
+      setTimeout(() => { heart.remove(); }, 6000);
+    }, 350);
   }
 </script>
 
