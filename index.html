@@ -8,11 +8,10 @@
     body {
       margin: 0;
       padding: 0;
-      /* Changed to a lighter background so black text is visible */
       background: linear-gradient(135deg, #ffebee, #f3e5f5, #e1f5fe);
       font-family: Arial, sans-serif;
       overflow: hidden;
-      color: #000000; /* Set all text to Black */
+      color: #000000;
       text-align: center;
     }
 
@@ -35,7 +34,7 @@
     h1 {
       font-size: 2.8em;
       margin-bottom: 15px;
-      color: #000000; /* Force Heading to Black */
+      color: #000000;
     }
 
     p {
@@ -43,7 +42,8 @@
       padding: 0 20px;
       font-size: 1.2em;
       line-height: 1.6;
-      color: #000000; /* Force Paragraph to Black */
+      color: #000000;
+      white-space: pre-line; /* Keeps your spacing exactly as you wrote it */
     }
 
     button {
@@ -53,7 +53,7 @@
       border: none;
       border-radius: 30px;
       background: #ff4da6;
-      color: white; /* Button text stays white for contrast */
+      color: white;
       cursor: pointer;
       transition: 0.3s;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -67,6 +67,7 @@
       position: absolute;
       color: #ff4da6;
       animation: float 6s linear infinite;
+      z-index: -1;
     }
 
     @keyframes float {
