@@ -9,8 +9,7 @@
     body {
       margin: 0;
       padding: 0;
-      /* Vibrant Romantic Gradient */
-      background: linear-gradient(160deg, #ff758c 0%, #ff7eb3 100%);
+      background: linear-gradient(160deg, #ffafbd 0%, #ffc3a0 100%);
       font-family: 'Georgia', serif;
       overflow: hidden;
       color: #000000;
@@ -19,18 +18,19 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      -webkit-font-smoothing: antialiased;
     }
 
-    /* Soft Floral Pattern Overlay */
-    body::after {
-      content: "";
+    /* Blooming Flower Animation Container */
+    #bloom-container {
       position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background-image: url('https://www.transparenttextures.com/patterns/floral-paper.png');
-      opacity: 0.2;
-      z-index: -1;
-      pointer-events: none;
+      z-index: 1;
+      display: none;
+      animation: bloomIn 2s ease-out forwards;
+    }
+
+    @keyframes bloomIn {
+      0% { transform: scale(0) rotate(0deg); opacity: 0; }
+      100% { transform: scale(1.5) rotate(10deg); opacity: 0.6; }
     }
 
     .screen {
@@ -44,44 +44,26 @@
       transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
       padding: 30px;
       box-sizing: border-box;
-    }
-
-    /* Optimized Glass Card for 12 Pro Max */
-    .glass-card {
-      background: rgba(255, 255, 255, 0.22);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-radius: 40px;
-      padding: 45px 25px;
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-      width: 100%;
-      max-width: 350px; /* Perfect width for 12 Pro Max screen */
       z-index: 10;
     }
 
-    #secondScreen {
-      opacity: 0;
-      pointer-events: none;
+    .glass-card {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 40px;
+      padding: 45px 25px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 350px;
     }
 
-    h1 {
-      font-size: 2.2em;
-      margin-bottom: 15px;
-      color: #7b132d; 
-      line-height: 1.2;
-    }
+    #secondScreen { opacity: 0; pointer-events: none; }
 
-    p {
-      font-size: 1.15em;
-      line-height: 1.7;
-      color: #000000;
-      white-space: pre-line;
-      font-weight: 600;
-      margin: 0;
-    }
+    h1 { font-size: 2.2em; margin-bottom: 15px; color: #7b132d; }
+    p { font-size: 1.15em; line-height: 1.7; font-weight: 600; margin: 0; }
 
-    /* Pulsing Romantic Button */
     button {
       margin-top: 35px;
       padding: 18px 50px;
@@ -91,10 +73,9 @@
       background: #ff0055;
       color: white;
       font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s ease;
       box-shadow: 0 10px 20px rgba(255, 0, 85, 0.3);
       animation: pulse 2s infinite;
+      cursor: pointer;
     }
 
     @keyframes pulse {
@@ -103,16 +84,11 @@
       100% { transform: scale(1); }
     }
 
-    button:active {
-      transform: scale(0.95);
-    }
-
     .flower {
       position: absolute;
       animation: fall 6s linear infinite;
-      z-index: 1;
+      z-index: 5;
       pointer-events: none;
-      user-select: none;
     }
 
     @keyframes fall {
@@ -122,8 +98,9 @@
     }
   </style>
 </head>
-
 <body>
+
+<div id="bloom-container">🌸</div>
 
 <div class="screen" id="firstScreen">
   <div class="glass-card">
@@ -157,18 +134,21 @@
 
 <script>
   function startLove() {
-    // Hide first screen
+    // Trigger Bloom
+    const bloom = document.getElementById("bloom-container");
+    bloom.style.display = "block";
+    bloom.style.fontSize = "200px";
+
+    // Screen Transition
     document.getElementById("firstScreen").style.opacity = "0";
-    
     setTimeout(() => {
       document.getElementById("firstScreen").style.display = "none";
       document.getElementById("secondScreen").style.opacity = "1";
       document.getElementById("secondScreen").style.pointerEvents = "auto";
     }, 1200);
 
-    // Play Music
-    const music = document.getElementById("bgMusic");
-    music.play().catch(e => console.log("Audio needs interaction"));
+    // Audio
+    document.getElementById("bgMusic").play();
 
     spawnFlowers();
   }
@@ -182,7 +162,6 @@
       el.style.left = Math.random() * 95 + "vw";
       el.style.fontSize = Math.random() * 25 + 15 + "px";
       document.body.appendChild(el);
-      
       setTimeout(() => { el.remove(); }, 6000);
     }, 350);
   }
