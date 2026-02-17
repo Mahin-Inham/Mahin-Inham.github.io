@@ -65,7 +65,6 @@
       min-height: 240px;
     }
 
-    /* PERFECT SVG HEART ANIMATION */
     .heart-container {
       width: 120px;
       height: 120px;
@@ -144,8 +143,8 @@
   </div>
 </div>
 
-<audio id="bgMusic" loop>
-  <source src="https://www2.cs.uic.edu/~i101/SoundFiles/StarWars60.wav" type="audio/wav">
+<audio id="bgMusic" loop playsinline>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
 </audio>
 
 <script>
@@ -166,7 +165,12 @@ Always. Forever. Until the End. 💖`;
     target.className = 'screen visible';
 
     if (num === 2) {
-      document.getElementById("bgMusic").play();
+      const music = document.getElementById("bgMusic");
+      // Force play for iPhone
+      music.play().catch(error => {
+        console.log("Audio play failed: ", error);
+      });
+      
       document.getElementById("title2").innerHTML = "I Love You ❤️";
       typeWriter(romanticText, 0);
     }
