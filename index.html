@@ -1,33 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>For My Manuuuu ❤️</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
   <style>
     body {
       margin: 0;
       padding: 0;
-      /* Strong Vibrant Romantic Pink Gradient */
-      background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+      /* Vibrant Romantic Gradient */
+      background: linear-gradient(160deg, #ff758c 0%, #ff7eb3 100%);
       font-family: 'Georgia', serif;
       overflow: hidden;
-      color: #000000; /* Solid Black for maximum clarity */
+      color: #000000;
       text-align: center;
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* Added a subtle floral pattern over the pink */
+    /* Soft Floral Pattern Overlay */
     body::after {
       content: "";
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
       background-image: url('https://www.transparenttextures.com/patterns/floral-paper.png');
-      opacity: 0.4;
+      opacity: 0.2;
       z-index: -1;
+      pointer-events: none;
     }
 
     .screen {
@@ -38,9 +41,23 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      transition: opacity 1.2s ease;
-      padding: 20px;
+      transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 30px;
       box-sizing: border-box;
+    }
+
+    /* Optimized Glass Card for 12 Pro Max */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.22);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-radius: 40px;
+      padding: 45px 25px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+      width: 100%;
+      max-width: 350px; /* Perfect width for 12 Pro Max screen */
+      z-index: 10;
     }
 
     #secondScreen {
@@ -49,52 +66,58 @@
     }
 
     h1 {
-      font-size: 3em;
-      margin-bottom: 10px;
-      color: #7b132d; /* Deep Wine Red for the title */
-      text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+      font-size: 2.2em;
+      margin-bottom: 15px;
+      color: #7b132d; 
+      line-height: 1.2;
     }
 
     p {
-      max-width: 600px;
-      font-size: 1.4em;
-      line-height: 1.6;
+      font-size: 1.15em;
+      line-height: 1.7;
       color: #000000;
       white-space: pre-line;
-      font-weight: bold;
-      text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.3);
+      font-weight: 600;
+      margin: 0;
     }
 
+    /* Pulsing Romantic Button */
     button {
-      margin-top: 25px;
+      margin-top: 35px;
       padding: 18px 50px;
-      font-size: 20px;
-      border: 2px solid #ffffff;
+      font-size: 18px;
+      border: none;
       border-radius: 50px;
       background: #ff0055;
       color: white;
       font-weight: bold;
       cursor: pointer;
-      transition: 0.4s;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 20px rgba(255, 0, 85, 0.3);
+      animation: pulse 2s infinite;
     }
 
-    button:hover {
-      transform: scale(1.1);
-      background: #ff4d88;
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    button:active {
+      transform: scale(0.95);
     }
 
     .flower {
       position: absolute;
       animation: fall 6s linear infinite;
-      z-index: 0;
+      z-index: 1;
       pointer-events: none;
-      filter: drop-shadow(0 0 5px rgba(255,255,255,0.5));
+      user-select: none;
     }
 
     @keyframes fall {
       0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
-      10% { opacity: 1; }
+      15% { opacity: 1; }
       100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
     }
   </style>
@@ -103,56 +126,65 @@
 <body>
 
 <div class="screen" id="firstScreen">
-  <h1>Hey Manuuuu ❤️</h1>
-  <p>Mn oyata podi deyak haduwa. Heeeee</p>
-  <button onclick="startLove()">Tap Here 💖</button>
+  <div class="glass-card">
+    <h1>Hey Manuuuu ❤️</h1>
+    <p>Mn oyata podi deyak haduwa. Heeeee</p>
+    <button onclick="startLove()">Tap Here 💖</button>
+  </div>
 </div>
 
 <div class="screen" id="secondScreen">
-  <h1>I Luv U So Much Umma Kateeee ❤️</h1>
-  <p>
-    You are my GF
-    You are my Best Friend
-    You are my Wife
-    My Woman  
-    My favorite person in the whole world.  
+  <div class="glass-card">
+    <h1>I Luv U So Much Umma Kateeee ❤️</h1>
+    <p>
+      You are my GF
+      You are my Best Friend
+      You are my Wife
+      My Woman  
+      My favorite person in the whole world.  
 
-    No matter what happens,  
-    I’ll always choose mage umma katee...  
+      No matter what happens,  
+      I’ll always choose mage umma katee...  
 
-    Always. Forever. Until the End. 💖
-  </p>
+      Always. Forever. Until the End. 💖
+    </p>
+  </div>
 </div>
 
-<audio id="bgMusic">
+<audio id="bgMusic" loop>
   <source src="https://www2.cs.uic.edu/~i101/SoundFiles/StarWars60.wav" type="audio/wav">
 </audio>
 
 <script>
   function startLove() {
+    // Hide first screen
     document.getElementById("firstScreen").style.opacity = "0";
+    
     setTimeout(() => {
       document.getElementById("firstScreen").style.display = "none";
       document.getElementById("secondScreen").style.opacity = "1";
       document.getElementById("secondScreen").style.pointerEvents = "auto";
     }, 1200);
 
-    document.getElementById("bgMusic").play();
+    // Play Music
+    const music = document.getElementById("bgMusic");
+    music.play().catch(e => console.log("Audio needs interaction"));
+
     spawnFlowers();
   }
 
   function spawnFlowers() {
-    const petals = ["🌸", "💗", "🌺", "🌹", "🌷", "✨"];
+    const symbols = ["🌸", "💗", "🌺", "🌹", "🌷", "✨"];
     setInterval(() => {
       const el = document.createElement("div");
       el.classList.add("flower");
-      el.innerHTML = petals[Math.floor(Math.random() * petals.length)];
-      el.style.left = Math.random() * 100 + "vw";
-      el.style.fontSize = Math.random() * 30 + 20 + "px";
+      el.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+      el.style.left = Math.random() * 95 + "vw";
+      el.style.fontSize = Math.random() * 25 + 15 + "px";
       document.body.appendChild(el);
       
       setTimeout(() => { el.remove(); }, 6000);
-    }, 250);
+    }, 350);
   }
 </script>
 
