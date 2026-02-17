@@ -144,7 +144,7 @@
 </div>
 
 <audio id="bgMusic" loop playsinline>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  <source src="https://www.mboxdrive.com/Ed%20Sheeran%20-%20Perfect%20(Official%20Music%20Video).mp3" type="audio/mpeg">
 </audio>
 
 <script>
@@ -166,10 +166,8 @@ Always. Forever. Until the End. 💖`;
 
     if (num === 2) {
       const music = document.getElementById("bgMusic");
-      // Force play for iPhone
-      music.play().catch(error => {
-        console.log("Audio play failed: ", error);
-      });
+      // Force play for iPhone on button tap
+      music.play();
       
       document.getElementById("title2").innerHTML = "I Love You ❤️";
       typeWriter(romanticText, 0);
