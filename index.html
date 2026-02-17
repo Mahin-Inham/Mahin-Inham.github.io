@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For My Manuuuu ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      color: white;
+      text-align: center;
+    }
+
+    .screen {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 1.5s ease;
+    }
+
+    #secondScreen {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      margin-bottom: 15px;
+    }
+
+    p {
+      max-width: 600px;
+      padding: 0 20px;
+      font-size: 1.2em;
+      line-height: 1.6;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px 30px;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+      background: #ff4da6;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #ff1a8c;
+    }
+
+    .heart {
+      position: absolute;
+      color: #ff4da6;
+      animation: float 6s linear infinite;
+    }
+
+    @keyframes float {
+      from { transform: translateY(100vh); opacity: 1; }
+      to { transform: translateY(-10vh); opacity: 0; }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="screen" id="firstScreen">
+  <h1>Hey Manuuuu ❤️</h1>
+  <p>I made something special just for you.</p>
+  <button onclick="startLove()">Tap Here 💖</button>
+</div>
+
+<div class="screen" id="secondScreen">
+  <h1>I Love You So Much ❤️</h1>
+  <p>
+    You are my peace.  
+    My happiness.  
+    My favorite person in the whole world.  
+
+    No matter what happens,  
+    I’ll always choose you.  
+
+    Always. Forever. 💖
+  </p>
+</div>
+
+<audio id="bgMusic">
+  <source src="https://www2.cs.uic.edu/~i101/SoundFiles/StarWars60.wav" type="audio/wav">
+</audio>
+
+<script>
+  function startLove() {
+    document.getElementById("firstScreen").style.opacity = "0";
+    setTimeout(() => {
+      document.getElementById("firstScreen").style.display = "none";
+      document.getElementById("secondScreen").style.opacity = "1";
+      document.getElementById("secondScreen").style.pointerEvents = "auto";
+    }, 1500);
+
+    document.getElementById("bgMusic").play();
+
+    createHearts();
+  }
+
+  function createHearts() {
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 20 + "px";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }, 300);
+  }
+</script>
+
+</body>
+</html>
