@@ -9,7 +9,7 @@
     :root {
       --primary-pink: #ff758c;
       --deep-rose: #7b132d;
-      --glass: rgba(255, 255, 255, 0.2);
+      --glass: rgba(255, 255, 255, 0.25);
     }
 
     body {
@@ -50,7 +50,6 @@
       z-index: 10;
     }
 
-    /* Screen States */
     .hidden { opacity: 0; transform: scale(0.9) translateY(20px); pointer-events: none; }
     .visible { opacity: 1; transform: scale(1) translateY(0); pointer-events: auto; }
 
@@ -65,20 +64,30 @@
       text-align: center;
     }
 
-    /* Sketch Styling */
+    /* Sketch Styling - Improved for iPhone Retina Display */
     .sketch-container {
       width: 100%;
+      min-height: 200px;
       border-radius: 20px;
       overflow: hidden;
       margin-bottom: 20px;
-      border: 1px solid rgba(0,0,0,0.1);
       background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .sketch-img {
       width: 100%;
+      height: auto;
       display: block;
-      filter: sepia(0.2) contrast(1.1); /* Makes it look more like a physical sketch */
+      /* Added a subtle fade-in so it looks smooth */
+      animation: fadeInImg 2s ease;
+    }
+
+    @keyframes fadeInImg {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     button {
@@ -129,7 +138,7 @@
 <div class="screen hidden" id="screen3">
   <div class="glass-card">
     <div class="sketch-container">
-      <img class="sketch-img" src="https://img.freepik.com/premium-vector/continuous-line-drawing-man-woman-kissing-valentines-day-concept_273391-344.jpg" alt="Kissing Sketch">
+      <img class="sketch-img" src="https://cdn.pixabay.com/photo/2017/01/29/13/21/couple-2017959_1280.png" alt="❤️">
     </div>
     <h1 style="font-size: 1.8em;">This is for you ❤️</h1>
     <p style="font-weight: 600; color: #444;">Every kiss with you is like a dream I never want to wake up from.</p>
@@ -154,10 +163,7 @@ I’ll always choose mage umma katee...
 Always. Forever. Until the End. 💖`;
 
   function showScreen(num) {
-    // Hide all screens
     document.querySelectorAll('.screen').forEach(s => s.className = 'screen hidden');
-    
-    // Show selected screen
     const target = document.getElementById('screen' + num);
     target.className = 'screen visible';
 
@@ -166,8 +172,6 @@ Always. Forever. Until the End. 💖`;
       document.getElementById("title2").innerHTML = "I Love You ❤️";
       typeWriter(romanticText, 0);
     }
-    
-    if (num === 1) spawnFlowers();
   }
 
   function typeWriter(text, i) {
@@ -192,7 +196,6 @@ Always. Forever. Until the End. 💖`;
     }, 300);
   }
 
-  // Start flowers on load
   spawnFlowers();
 </script>
 
