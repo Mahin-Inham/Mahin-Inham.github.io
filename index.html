@@ -22,22 +22,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* Animated background glow */
-    .glow {
-      position: absolute;
-      width: 150vw;
-      height: 150vh;
-      background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,182,193,0) 70%);
-      animation: moveGlow 10s infinite alternate;
-      z-index: -1;
-    }
-
-    @keyframes moveGlow {
-      from { transform: translate(-10%, -10%); }
-      to { transform: translate(10%, 10%); }
     }
 
     .screen {
@@ -48,7 +32,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      transition: all 1.5s ease;
+      transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
       padding: 20px;
       box-sizing: border-box;
     }
@@ -57,37 +41,50 @@
       background: var(--glass);
       backdrop-filter: blur(25px);
       -webkit-backdrop-filter: blur(25px);
-      border-radius: 50px;
-      padding: 40px 20px;
+      border-radius: 40px;
+      padding: 30px 20px;
       border: 1px solid rgba(255, 255, 255, 0.5);
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
       width: 90%;
       max-width: 360px;
       z-index: 10;
-      transition: transform 0.5s ease;
     }
 
-    #secondScreen { opacity: 0; transform: scale(0.8); pointer-events: none; }
+    /* Screen States */
+    .hidden { opacity: 0; transform: scale(0.9) translateY(20px); pointer-events: none; }
+    .visible { opacity: 1; transform: scale(1) translateY(0); pointer-events: auto; }
 
-    h1 {
-      font-size: 2.4em;
-      margin-bottom: 15px;
-      color: var(--deep-rose);
-      font-weight: bold;
-    }
-
+    h1 { font-size: 2.2em; margin-bottom: 15px; color: var(--deep-rose); }
+    
     .typewriter {
-      font-size: 1.2em;
-      line-height: 1.8;
+      font-size: 1.15em;
+      line-height: 1.7;
       color: #000;
       font-weight: 600;
-      min-height: 200px; /* Prevents card jumping */
+      min-height: 250px;
+      text-align: center;
+    }
+
+    /* Sketch Styling */
+    .sketch-container {
+      width: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      border: 1px solid rgba(0,0,0,0.1);
+      background: white;
+    }
+
+    .sketch-img {
+      width: 100%;
+      display: block;
+      filter: sepia(0.2) contrast(1.1); /* Makes it look more like a physical sketch */
     }
 
     button {
-      margin-top: 30px;
-      padding: 20px 60px;
-      font-size: 18px;
+      margin-top: 20px;
+      padding: 18px 50px;
+      font-size: 17px;
       border: none;
       border-radius: 100px;
       background: linear-gradient(45deg, #ff0055, #ff758c);
@@ -95,15 +92,6 @@
       font-weight: bold;
       box-shadow: 0 10px 30px rgba(255, 0, 85, 0.4);
       cursor: pointer;
-      animation: heartbeat 2s infinite;
-    }
-
-    @keyframes heartbeat {
-      0% { transform: scale(1); }
-      10% { transform: scale(1.1); }
-      20% { transform: scale(1); }
-      30% { transform: scale(1.05); }
-      40% { transform: scale(1); }
     }
 
     .flower {
@@ -114,28 +102,38 @@
     }
 
     @keyframes fallVar {
-      0% { transform: translateY(-10vh) rotate(0deg) translateX(0); opacity: 0; }
+      0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
       20% { opacity: 1; }
-      100% { transform: translateY(110vh) rotate(720deg) translateX(50px); opacity: 0; }
+      100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
     }
   </style>
 </head>
 <body>
 
-<div class="glow"></div>
-
-<div class="screen" id="firstScreen">
+<div class="screen visible" id="screen1">
   <div class="glass-card">
     <h1>Hey Manuuuu ❤️</h1>
     <p style="font-weight: 600;">Mn oyata podi deyak haduwa. Heeeee</p>
-    <button onclick="startLove()">Open My Heart 💖</button>
+    <button onclick="showScreen(2)">Open My Heart 💖</button>
   </div>
 </div>
 
-<div class="screen" id="secondScreen">
+<div class="screen hidden" id="screen2">
   <div class="glass-card">
-    <h1 id="titleText"></h1>
+    <h1 id="title2"></h1>
     <div id="textDest" class="typewriter"></div>
+    <button id="nextBtn" style="display:none;" onclick="showScreen(3)">Something More... ✨</button>
+  </div>
+</div>
+
+<div class="screen hidden" id="screen3">
+  <div class="glass-card">
+    <div class="sketch-container">
+      <img class="sketch-img" src="https://img.freepik.com/premium-vector/continuous-line-drawing-man-woman-kissing-valentines-day-concept_273391-344.jpg" alt="Kissing Sketch">
+    </div>
+    <h1 style="font-size: 1.8em;">This is for you ❤️</h1>
+    <p style="font-weight: 600; color: #444;">Every kiss with you is like a dream I never want to wake up from.</p>
+    <p style="font-size: 0.9em; margin-top: 10px; color: var(--deep-rose);">I love you, Manuu.</p>
   </div>
 </div>
 
@@ -155,35 +153,30 @@ I’ll always choose mage umma katee...
 
 Always. Forever. Until the End. 💖`;
 
-  function typeWriter(text, i, fnCallback) {
-    if (i < text.length) {
-      document.getElementById("textDest").innerHTML = text.substring(0, i + 1) + '<span aria-hidden="true"></span>';
-      setTimeout(function() {
-        typeWriter(text, i + 1, fnCallback)
-      }, 70);
-    } else if (typeof fnCallback == 'function') {
-      setTimeout(fnCallback, 700);
+  function showScreen(num) {
+    // Hide all screens
+    document.querySelectorAll('.screen').forEach(s => s.className = 'screen hidden');
+    
+    // Show selected screen
+    const target = document.getElementById('screen' + num);
+    target.className = 'screen visible';
+
+    if (num === 2) {
+      document.getElementById("bgMusic").play();
+      document.getElementById("title2").innerHTML = "I Love You ❤️";
+      typeWriter(romanticText, 0);
     }
+    
+    if (num === 1) spawnFlowers();
   }
 
-  function startLove() {
-    document.getElementById("firstScreen").style.opacity = "0";
-    document.getElementById("firstScreen").style.transform = "translateY(-20px)";
-    
-    setTimeout(() => {
-      document.getElementById("firstScreen").style.display = "none";
-      const second = document.getElementById("secondScreen");
-      second.style.opacity = "1";
-      second.style.transform = "scale(1)";
-      second.style.pointerEvents = "auto";
-      
-      // Start typing animations
-      document.getElementById("titleText").innerHTML = "I Love You So Much ❤️";
-      typeWriter(romanticText, 0);
-    }, 1000);
-
-    document.getElementById("bgMusic").play();
-    spawnFlowers();
+  function typeWriter(text, i) {
+    if (i < text.length) {
+      document.getElementById("textDest").innerHTML = text.substring(0, i + 1) + '<span></span>';
+      setTimeout(() => typeWriter(text, i + 1), 60);
+    } else {
+      document.getElementById("nextBtn").style.display = "inline-block";
+    }
   }
 
   function spawnFlowers() {
@@ -194,11 +187,13 @@ Always. Forever. Until the End. 💖`;
       el.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
       el.style.left = Math.random() * 95 + "vw";
       el.style.fontSize = Math.random() * 20 + 15 + "px";
-      el.style.opacity = Math.random();
       document.body.appendChild(el);
-      setTimeout(() => { el.remove(); }, 7000);
-    }, 250);
+      setTimeout(() => el.remove(), 7000);
+    }, 300);
   }
+
+  // Start flowers on load
+  spawnFlowers();
 </script>
 
 </body>
