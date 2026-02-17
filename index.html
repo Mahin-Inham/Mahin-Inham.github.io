@@ -6,31 +6,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
   <style>
+    :root {
+      --primary-pink: #ff758c;
+      --deep-rose: #7b132d;
+      --glass: rgba(255, 255, 255, 0.2);
+    }
+
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(160deg, #ffafbd 0%, #ffc3a0 100%);
+      background: linear-gradient(135deg, #fce4ec 0%, #ffc1cc 50%, #f8bbd0 100%);
       font-family: 'Georgia', serif;
       overflow: hidden;
-      color: #000000;
-      text-align: center;
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* Blooming Flower Animation Container */
-    #bloom-container {
+    /* Animated background glow */
+    .glow {
       position: absolute;
-      z-index: 1;
-      display: none;
-      animation: bloomIn 2s ease-out forwards;
+      width: 150vw;
+      height: 150vh;
+      background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,182,193,0) 70%);
+      animation: moveGlow 10s infinite alternate;
+      z-index: -1;
     }
 
-    @keyframes bloomIn {
-      0% { transform: scale(0) rotate(0deg); opacity: 0; }
-      100% { transform: scale(1.5) rotate(10deg); opacity: 0.6; }
+    @keyframes moveGlow {
+      from { transform: translate(-10%, -10%); }
+      to { transform: translate(10%, 10%); }
     }
 
     .screen {
@@ -41,90 +48,94 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-      padding: 30px;
+      transition: all 1.5s ease;
+      padding: 20px;
       box-sizing: border-box;
-      z-index: 10;
     }
 
     .glass-card {
-      background: rgba(255, 255, 255, 0.25);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-radius: 40px;
-      padding: 45px 25px;
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      max-width: 350px;
+      background: var(--glass);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border-radius: 50px;
+      padding: 40px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 360px;
+      z-index: 10;
+      transition: transform 0.5s ease;
     }
 
-    #secondScreen { opacity: 0; pointer-events: none; }
+    #secondScreen { opacity: 0; transform: scale(0.8); pointer-events: none; }
 
-    h1 { font-size: 2.2em; margin-bottom: 15px; color: #7b132d; }
-    p { font-size: 1.15em; line-height: 1.7; font-weight: 600; margin: 0; }
+    h1 {
+      font-size: 2.4em;
+      margin-bottom: 15px;
+      color: var(--deep-rose);
+      font-weight: bold;
+    }
+
+    .typewriter {
+      font-size: 1.2em;
+      line-height: 1.8;
+      color: #000;
+      font-weight: 600;
+      min-height: 200px; /* Prevents card jumping */
+    }
 
     button {
-      margin-top: 35px;
-      padding: 18px 50px;
+      margin-top: 30px;
+      padding: 20px 60px;
       font-size: 18px;
       border: none;
-      border-radius: 50px;
-      background: #ff0055;
+      border-radius: 100px;
+      background: linear-gradient(45deg, #ff0055, #ff758c);
       color: white;
       font-weight: bold;
-      box-shadow: 0 10px 20px rgba(255, 0, 85, 0.3);
-      animation: pulse 2s infinite;
+      box-shadow: 0 10px 30px rgba(255, 0, 85, 0.4);
       cursor: pointer;
+      animation: heartbeat 2s infinite;
     }
 
-    @keyframes pulse {
+    @keyframes heartbeat {
       0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
+      10% { transform: scale(1.1); }
+      20% { transform: scale(1); }
+      30% { transform: scale(1.05); }
+      40% { transform: scale(1); }
     }
 
     .flower {
       position: absolute;
-      animation: fall 6s linear infinite;
       z-index: 5;
       pointer-events: none;
+      animation: fallVar 7s linear infinite;
     }
 
-    @keyframes fall {
-      0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
-      15% { opacity: 1; }
-      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    @keyframes fallVar {
+      0% { transform: translateY(-10vh) rotate(0deg) translateX(0); opacity: 0; }
+      20% { opacity: 1; }
+      100% { transform: translateY(110vh) rotate(720deg) translateX(50px); opacity: 0; }
     }
   </style>
 </head>
 <body>
 
-<div id="bloom-container">🌸</div>
+<div class="glow"></div>
 
 <div class="screen" id="firstScreen">
   <div class="glass-card">
     <h1>Hey Manuuuu ❤️</h1>
-    <p>Mn oyata podi deyak haduwa. Heeeee</p>
-    <button onclick="startLove()">Tap Here 💖</button>
+    <p style="font-weight: 600;">Mn oyata podi deyak haduwa. Heeeee</p>
+    <button onclick="startLove()">Open My Heart 💖</button>
   </div>
 </div>
 
 <div class="screen" id="secondScreen">
   <div class="glass-card">
-    <h1>I Luv U So Much Umma Kateeee ❤️</h1>
-    <p>
-      You are my GF
-      You are my Best Friend
-      You are my Wife
-      My Woman  
-      My favorite person in the whole world.  
-
-      No matter what happens,  
-      I’ll always choose mage umma katee...  
-
-      Always. Forever. Until the End. 💖
-    </p>
+    <h1 id="titleText"></h1>
+    <div id="textDest" class="typewriter"></div>
   </div>
 </div>
 
@@ -133,37 +144,60 @@
 </audio>
 
 <script>
-  function startLove() {
-    // Trigger Bloom
-    const bloom = document.getElementById("bloom-container");
-    bloom.style.display = "block";
-    bloom.style.fontSize = "200px";
+  const romanticText = `You are my GF
+You are my Best Friend
+You are my Wife
+My Woman
+My favorite person in the whole world.
 
-    // Screen Transition
+No matter what happens,
+I’ll always choose mage umma katee...
+
+Always. Forever. Until the End. 💖`;
+
+  function typeWriter(text, i, fnCallback) {
+    if (i < text.length) {
+      document.getElementById("textDest").innerHTML = text.substring(0, i + 1) + '<span aria-hidden="true"></span>';
+      setTimeout(function() {
+        typeWriter(text, i + 1, fnCallback)
+      }, 70);
+    } else if (typeof fnCallback == 'function') {
+      setTimeout(fnCallback, 700);
+    }
+  }
+
+  function startLove() {
     document.getElementById("firstScreen").style.opacity = "0";
+    document.getElementById("firstScreen").style.transform = "translateY(-20px)";
+    
     setTimeout(() => {
       document.getElementById("firstScreen").style.display = "none";
-      document.getElementById("secondScreen").style.opacity = "1";
-      document.getElementById("secondScreen").style.pointerEvents = "auto";
-    }, 1200);
+      const second = document.getElementById("secondScreen");
+      second.style.opacity = "1";
+      second.style.transform = "scale(1)";
+      second.style.pointerEvents = "auto";
+      
+      // Start typing animations
+      document.getElementById("titleText").innerHTML = "I Love You So Much ❤️";
+      typeWriter(romanticText, 0);
+    }, 1000);
 
-    // Audio
     document.getElementById("bgMusic").play();
-
     spawnFlowers();
   }
 
   function spawnFlowers() {
-    const symbols = ["🌸", "💗", "🌺", "🌹", "🌷", "✨"];
+    const symbols = ["🌸", "💗", "🌺", "🌹", "✨", "🦋"];
     setInterval(() => {
       const el = document.createElement("div");
       el.classList.add("flower");
       el.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
       el.style.left = Math.random() * 95 + "vw";
-      el.style.fontSize = Math.random() * 25 + 15 + "px";
+      el.style.fontSize = Math.random() * 20 + 15 + "px";
+      el.style.opacity = Math.random();
       document.body.appendChild(el);
-      setTimeout(() => { el.remove(); }, 6000);
-    }, 350);
+      setTimeout(() => { el.remove(); }, 7000);
+    }, 250);
   }
 </script>
 
