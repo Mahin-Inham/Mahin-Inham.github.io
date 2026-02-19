@@ -140,14 +140,14 @@ button {
 }
 
 /* Sketch drawing animation */
-.sketch path {
+.sketch path, .sketch circle {
   fill: none;
   stroke: white;
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
   animation: draw 4s ease forwards;
 }
 
@@ -233,11 +233,17 @@ button {
   <div class="card">
     <div class="glow"></div>
 
-    <!-- Animated Sketch -->
+    <!-- Animated Baby Sketch -->
     <svg class="sketch" width="200" height="160" viewBox="0 0 200 160">
-      <path d="M50 110 Q60 60 90 60 Q120 60 130 110" />
-      <path d="M90 60 Q95 40 105 60" />
-      <path d="M85 110 Q100 140 115 110" />
+      <!-- Head -->
+      <circle cx="100" cy="40" r="20" />
+      <!-- Body -->
+      <path d="M80 60 Q100 110 120 60" />
+      <!-- Arms -->
+      <path d="M80 60 Q70 85 80 95" />
+      <path d="M120 60 Q130 85 120 95" />
+      <!-- Legs -->
+      <path d="M90 110 Q100 140 110 110" />
     </svg>
 
     <h1>My Promise ✨</h1>
