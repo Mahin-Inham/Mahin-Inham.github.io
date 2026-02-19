@@ -1,27 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>For My Manuuuu ❤️</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Our Little Universe 🌙</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    :root {
-      --primary-pink: #ff758c;
-      --deep-rose: #7b132d;
-      --glass: rgba(255, 255, 255, 0.25);
-    }
-
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #fce4ec 0%, #ffc1cc 50%, #f8bbd0 100%);
+      background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
       font-family: 'Georgia', serif;
       overflow: hidden;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      color: white;
+      text-align: center;
     }
 
     .screen {
@@ -29,180 +20,116 @@
       width: 100%;
       height: 100%;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      transition: all 1s ease-in-out;
-      padding: 20px;
-      box-sizing: border-box;
+      flex-direction: column;
+      transition: opacity 1.5s ease;
     }
 
-    .glass-card {
-      background: var(--glass);
-      backdrop-filter: blur(25px);
-      -webkit-backdrop-filter: blur(25px);
-      border-radius: 40px;
-      padding: 35px 20px;
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-      width: 90%;
-      max-width: 360px;
-      z-index: 10;
-      text-align: center;
+    .hidden {
+      opacity: 0;
+      pointer-events: none;
     }
 
-    .hidden { opacity: 0; transform: translateY(30px); pointer-events: none; }
-    .visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
-
-    h1 { font-size: 2.2em; color: var(--deep-rose); margin-bottom: 15px; }
-    
-    .typewriter {
-      font-size: 1.15em;
-      line-height: 1.6;
-      color: #000;
-      font-weight: 600;
-      min-height: 220px;
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 15px;
     }
 
-    .heart-container {
-      width: 100px;
-      height: 100px;
-      margin: 0 auto 20px;
-    }
-
-    .heart-svg {
-      fill: #ff0055;
-      animation: heartbeat 1.2s infinite;
-    }
-
-    @keyframes heartbeat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.15); }
+    p {
+      max-width: 600px;
+      padding: 0 25px;
+      font-size: 1.2em;
+      line-height: 1.7;
     }
 
     button {
-      margin-top: 20px;
-      padding: 18px 50px;
-      font-size: 18px;
+      margin-top: 25px;
+      padding: 15px 40px;
+      font-size: 16px;
       border: none;
-      border-radius: 100px;
-      background: #ff0055;
-      color: white;
+      border-radius: 40px;
+      background: #ffffff;
+      color: #203a43;
       font-weight: bold;
-      box-shadow: 0 10px 25px rgba(255, 0, 85, 0.3);
       cursor: pointer;
     }
 
-    .flower {
+    .star {
       position: absolute;
-      z-index: 5;
-      pointer-events: none;
-      animation: fall 7s linear infinite;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 3s infinite alternate;
     }
 
-    @keyframes fall {
-      0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
-      20% { opacity: 1; }
-      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    @keyframes twinkle {
+      from { opacity: 0.3; }
+      to { opacity: 1; }
     }
   </style>
 </head>
+
 <body>
 
-<div class="screen visible" id="screen1">
-  <div class="glass-card">
-    <div class="heart-container">
-        <svg class="heart-svg" viewBox="0 0 32 32">
-            <path d="M16 28.21s-1.49-1.39-4.22-3.93C7.54 20.35 3 16.2 3 11.05 3 7.16 6.04 4 10 4c2.5 0 4.17 1.25 6 3.12C17.83 5.25 19.5 4 22 4c3.96 0 7 3.16 7 7.05 0 5.15-4.54 9.3-8.78 13.23-2.73 2.54-4.22 3.93-4.22 3.93z"/>
-        </svg>
-    </div>
-    <h1>For My Manuu ❤️</h1>
-    <p style="font-weight: 600;">Tap the heart to begin...</p>
-    <button onclick="startEverything()">Click Here 💖</button>
-  </div>
+<div class="screen" id="screen1">
+  <h1>Manuu… 🌙</h1>
+  <p>I was thinking about our future…</p>
+  <button onclick="nextScreen()">See Our Little Universe ✨</button>
 </div>
 
 <div class="screen hidden" id="screen2">
-  <div class="glass-card">
-    <h1 id="title2"></h1>
-    <div id="textDest" class="typewriter"></div>
-    <button id="nextBtn" style="display:none;" onclick="showScreen(3)">Keep going... ✨</button>
-  </div>
+  <h1>One Day… 💫</h1>
+  <p>
+    There will be a tiny <strong>Podi Manuu 👧</strong>  
+    with your smile, your eyes, your sweetness…  
+
+    And a little <strong>Podi Mahin 👦</strong>  
+    protecting his akka and his amma…  
+
+    And I’ll be there,  
+    protecting my whole world.  
+
+    You.  
+    Them.  
+    Our little universe. 🌙
+  </p>
+
+  <button onclick="finalScreen()">Forever Starts With Us ❤️</button>
 </div>
 
 <div class="screen hidden" id="screen3">
-  <div class="glass-card">
-    <div class="heart-container">
-        <svg class="heart-svg" viewBox="0 0 32 32">
-            <path d="M16 28.21s-1.49-1.39-4.22-3.93C7.54 20.35 3 16.2 3 11.05 3 7.16 6.04 4 10 4c2.5 0 4.17 1.25 6 3.12C17.83 5.25 19.5 4 22 4c3.96 0 7 3.16 7 7.05 0 5.15-4.54 9.3-8.78 13.23-2.73 2.54-4.22 3.93-4.22 3.93z"/>
-        </svg>
-    </div>
-    <h1 style="font-size: 1.8em;">This is for you ❤️</h1>
-    <p style="font-weight: 600; color: #333;">Every second with you is a gift I promise to cherish forever.</p>
-    <p style="font-size: 1.1em; margin-top: 15px; color: var(--deep-rose); font-style: italic;">I love you, Manuu. Umma!</p>
-  </div>
+  <h1>I Can’t Wait 💖</h1>
+  <p>
+    To build our home.  
+    To hold you close.  
+    To watch our Podi Manuu and Podi Mahin grow…  
+
+    With you by my side.  
+    Always. Forever. 🌌
+  </p>
 </div>
 
-<audio id="bgMusic" loop preload="auto">
-  <source src="https://cdn.pixabay.com/audio/2022/11/22/audio_104a37c041.mp3" type="audio/mpeg">
-</audio>
-
 <script>
-  const romanticText = `You are my GF
-You are my Best Friend
-You are my Wife
-My Woman
-My favorite person in the whole world.
-
-No matter what happens,
-I’ll always choose mage umma katee...
-
-Always. Forever. Until the End. 💖`;
-
-  const music = document.getElementById("bgMusic");
-
-  function startEverything() {
-    // 1. Start music immediately on tap
-    music.play().catch(e => console.log("Audio failed to start"));
-    
-    // 2. Move to Screen 2
-    showScreen(2);
+  function nextScreen() {
+    document.getElementById("screen1").classList.add("hidden");
+    document.getElementById("screen2").classList.remove("hidden");
   }
 
-  function showScreen(num) {
-    document.querySelectorAll('.screen').forEach(s => s.className = 'screen hidden');
-    const target = document.getElementById('screen' + num);
-    target.className = 'screen visible';
-
-    if (num === 2) {
-      document.getElementById("title2").innerHTML = "I Love You ❤️";
-      typeWriter(romanticText, 0);
-    }
+  function finalScreen() {
+    document.getElementById("screen2").classList.add("hidden");
+    document.getElementById("screen3").classList.remove("hidden");
   }
 
-  function typeWriter(text, i) {
-    if (i < text.length) {
-      document.getElementById("textDest").innerHTML = text.substring(0, i + 1) + '<span>|</span>';
-      setTimeout(() => typeWriter(text, i + 1), 60);
-    } else {
-      document.getElementById("nextBtn").style.display = "inline-block";
-    }
+  // Create stars
+  for (let i = 0; i < 80; i++) {
+    const star = document.createElement("div");
+    star.classList.add("star");
+    star.style.width = star.style.height = Math.random() * 3 + "px";
+    star.style.top = Math.random() * 100 + "vh";
+    star.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(star);
   }
-
-  function spawnFlowers() {
-    const symbols = ["🌸", "💗", "🌺", "🌹", "✨"];
-    setInterval(() => {
-      const el = document.createElement("div");
-      el.classList.add("flower");
-      el.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
-      el.style.left = Math.random() * 95 + "vw";
-      el.style.fontSize = Math.random() * 20 + 15 + "px";
-      document.body.appendChild(el);
-      setTimeout(() => el.remove(), 7000);
-    }, 400);
-  }
-
-  spawnFlowers();
 </script>
 
 </body>
