@@ -61,9 +61,12 @@ html, body {
 
 .glow {
   position: absolute;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(255,150,200,0.4), transparent 70%);
+  width: 350px;
+  height: 350px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(255,200,180,0.4), transparent 70%);
   border-radius: 50%;
   z-index: -1;
   animation: pulseGlow 4s ease-in-out infinite;
@@ -233,17 +236,34 @@ button {
   <div class="card">
     <div class="glow"></div>
 
-    <!-- Animated Baby Sketch -->
-    <svg class="sketch" width="200" height="160" viewBox="0 0 200 160">
+    <!-- Animated Full Baby Sketch -->
+    <svg class="sketch" width="220" height="220" viewBox="0 0 220 220">
       <!-- Head -->
-      <circle cx="100" cy="40" r="20" />
+      <circle cx="110" cy="40" r="25" />
+      <!-- Eyes -->
+      <circle cx="100" cy="35" r="3" />
+      <circle cx="120" cy="35" r="3" />
+      <!-- Smile -->
+      <path d="M100 50 Q110 60 120 50" />
+      
       <!-- Body -->
-      <path d="M80 60 Q100 110 120 60" />
+      <path d="M90 65 Q110 120 130 65" />
+      
       <!-- Arms -->
-      <path d="M80 60 Q70 85 80 95" />
-      <path d="M120 60 Q130 85 120 95" />
+      <path d="M90 65 Q70 90 80 110" />
+      <path d="M130 65 Q150 90 140 110" />
+      
+      <!-- Hands -->
+      <circle cx="80" cy="110" r="5" />
+      <circle cx="140" cy="110" r="5" />
+      
       <!-- Legs -->
-      <path d="M90 110 Q100 140 110 110" />
+      <path d="M100 120 Q105 160 90 180" />
+      <path d="M120 120 Q115 160 130 180" />
+      
+      <!-- Feet -->
+      <circle cx="90" cy="180" r="6" />
+      <circle cx="130" cy="180" r="6" />
     </svg>
 
     <h1>My Promise ✨</h1>
