@@ -94,7 +94,7 @@ button {
 @keyframes floatHeart { from { transform: translateY(100vh) scale(0.8); opacity: 1; } to { transform: translateY(-10vh) scale(1.3); opacity: 0; } }
 
 /* Sketch drawing animation */
-.sketch path { fill: none; stroke: white; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 500; stroke-dashoffset: 500; animation: draw 4s ease forwards; }
+.sketch path, .sketch circle { fill: none; stroke: white; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 500; stroke-dashoffset: 500; animation: draw 4s ease forwards; }
 @keyframes draw { to { stroke-dashoffset: 0; } }
 
 /* Floating doodle hearts */
@@ -142,16 +142,16 @@ button {
   </div>
 </div>
 
-<!-- Screen 4: Full Baby Sketch -->
+<!-- Screen 4: Baby sketch with white face and black eyes -->
 <div class="screen hidden" id="screen4">
   <div class="card">
     <div class="glow"></div>
     <svg class="sketch" width="220" height="220" viewBox="0 0 220 220">
-      <!-- Head -->
-      <circle cx="110" cy="40" r="25"/>
-      <!-- Eyes -->
-      <circle cx="100" cy="35" r="3"/>
-      <circle cx="120" cy="35" r="3"/>
+      <!-- Head: white fill -->
+      <circle cx="110" cy="40" r="25" fill="white" stroke="white" stroke-width="2"/>
+      <!-- Eyes: black -->
+      <circle cx="100" cy="35" r="3" fill="black" stroke="black"/>
+      <circle cx="120" cy="35" r="3" fill="black" stroke="black"/>
       <!-- Smile -->
       <path d="M100 50 Q110 60 120 50"/>
       <!-- Body -->
