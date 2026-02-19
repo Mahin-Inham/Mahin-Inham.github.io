@@ -105,20 +105,19 @@ button {
 .fade-line { opacity: 0; animation: fadeIn 1.5s forwards; }
 @keyframes fadeIn { to { opacity: 1; } }
 
-/* Heart above baby */
+/* Baby heart */
 .baby-heart {
   position: absolute;
-  left: 50%;
-  top: 10%;
+  left: 60%;  /* slightly to the side */
+  top: 15%;
   font-size: 35px;
   color: #ff5c8d;
-  transform: translateX(-50%);
   animation: floatBabyHeart 2s ease-in-out infinite;
 }
 @keyframes floatBabyHeart {
-  0% { transform: translate(-50%,0) scale(0.8); opacity: 0; }
-  50% { transform: translate(-50%,-20px) scale(1.2); opacity: 1; }
-  100% { transform: translate(-50%,-40px) scale(0.8); opacity: 0; }
+  0% { transform: translate(0,0) scale(0.8); opacity: 0; }
+  50% { transform: translate(0,-20px) scale(1.2); opacity: 1; }
+  100% { transform: translate(0,-40px) scale(0.8); opacity: 0; }
 }
 </style>
 </head>
@@ -158,39 +157,38 @@ button {
   </div>
 </div>
 
-<!-- Screen 4: Baby sketch with floating heart -->
+<!-- Screen 4: Baby sketch with animated drawing -->
 <div class="screen hidden" id="screen4">
   <div class="card">
     <div class="glow"></div>
 
     <!-- Baby Sketch -->
     <svg class="sketch" width="180" height="180" viewBox="0 0 220 220">
-      <!-- Head: white fill -->
-      <circle cx="110" cy="40" r="20" fill="white" stroke="white" stroke-width="2"/>
-      <!-- Eyes: black -->
-      <circle cx="102" cy="36" r="2" fill="black" stroke="black"/>
-      <circle cx="118" cy="36" r="2" fill="black" stroke="black"/>
+      <!-- Head -->
+      <circle cx="110" cy="40" r="20" fill="white" stroke="white" stroke-width="2" style="animation-delay:0s"/>
+      <!-- Eyes -->
+      <circle cx="102" cy="36" r="2" fill="black" stroke="black" style="animation-delay:0.5s"/>
+      <circle cx="118" cy="36" r="2" fill="black" stroke="black" style="animation-delay:0.5s"/>
       <!-- Smile -->
-      <path d="M102 50 Q110 58 118 50"/>
+      <path d="M102 50 Q110 58 118 50" style="animation-delay:1s"/>
       <!-- Body -->
-      <path d="M110 60 Q100 90 110 120 Q120 90 110 60"/>
+      <path d="M110 60 Q100 90 110 120 Q120 90 110 60" style="animation-delay:1.5s"/>
       <!-- Left arm -->
-      <path d="M110 65 Q80 85 85 100"/>
+      <path d="M110 65 Q80 85 85 100" style="animation-delay:2s"/>
       <!-- Right arm -->
-      <path d="M110 65 Q140 85 135 100"/>
+      <path d="M110 65 Q140 85 135 100" style="animation-delay:2s"/>
       <!-- Hands -->
-      <circle cx="85" cy="100" r="4"/>
-      <circle cx="135" cy="100" r="4"/>
-      <!-- Left leg -->
-      <path d="M110 120 Q95 145 100 160"/>
-      <!-- Right leg -->
-      <path d="M110 120 Q125 145 120 160"/>
+      <circle cx="85" cy="100" r="4" style="animation-delay:2.5s"/>
+      <circle cx="135" cy="100" r="4" style="animation-delay:2.5s"/>
+      <!-- Legs -->
+      <path d="M110 120 Q95 145 100 160" style="animation-delay:3s"/>
+      <path d="M110 120 Q125 145 120 160" style="animation-delay:3s"/>
       <!-- Feet -->
-      <circle cx="100" cy="160" r="4"/>
-      <circle cx="120" cy="160" r="4"/>
+      <circle cx="100" cy="160" r="4" style="animation-delay:3.5s"/>
+      <circle cx="120" cy="160" r="4" style="animation-delay:3.5s"/>
     </svg>
 
-    <!-- Floating heart above baby -->
+    <!-- Heart slightly to the side -->
     <div class="baby-heart">💖</div>
 
     <h1>My Promise ✨</h1>
@@ -225,7 +223,7 @@ setInterval(()=>{
   setTimeout(()=>s.remove(),2000);
 },4000);
 
-/* Floating hearts (random ones) */
+/* Floating hearts (random) */
 setInterval(()=>{
   const h=document.createElement("div");
   h.classList.add("heart");
