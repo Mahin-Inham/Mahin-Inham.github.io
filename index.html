@@ -17,13 +17,11 @@ html, body {
   animation: bgBreath 8s ease-in-out infinite alternate;
 }
 
-/* Background breathing effect */
 @keyframes bgBreath {
   from { filter: brightness(1); }
   to { filter: brightness(1.15); }
 }
 
-/* Screen layout */
 .screen {
   position: absolute;
   width: 100%;
@@ -41,7 +39,7 @@ html, body {
   pointer-events: none;
 }
 
-/* Glass card */
+/* Card */
 .card {
   width: 100%;
   max-width: 380px;
@@ -54,15 +52,30 @@ html, body {
   box-shadow: 0 25px 60px rgba(0,0,0,0.4);
   text-align: center;
   animation: floatCard 4s ease-in-out infinite;
+  position: relative;
 }
 
-/* Floating card animation */
 @keyframes floatCard {
   0%,100% { transform: translateY(0px); }
   50% { transform: translateY(-8px); }
 }
 
-/* Text */
+/* Glow pulse for final screen */
+.glow {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255,150,200,0.4), transparent 70%);
+  border-radius: 50%;
+  z-index: -1;
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%,100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.2); opacity: 1; }
+}
+
 h1 {
   font-size: 1.8em;
   margin-bottom: 15px;
@@ -74,7 +87,6 @@ p {
   opacity: 0.95;
 }
 
-/* Button */
 button {
   margin-top: 20px;
   padding: 14px 35px;
@@ -101,7 +113,30 @@ button {
   to { opacity: 1; }
 }
 
-/* Floating hearts */
+/* Shooting star */
+.shooting-star {
+  position: absolute;
+  width: 2px;
+  height: 80px;
+  background: linear-gradient(white, transparent);
+  transform: rotate(45deg);
+  animation: shoot 2s linear forwards;
+}
+
+@keyframes shoot {
+  from {
+    top: -10%;
+    left: 0%;
+    opacity: 1;
+  }
+  to {
+    top: 100%;
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+/* Hearts */
 .heart {
   position: absolute;
   color: #ff5c8d;
@@ -118,6 +153,16 @@ button {
     transform: translateY(-10vh) scale(1.3);
     opacity: 0;
   }
+}
+
+/* Fade-in text animation */
+.fade-line {
+  opacity: 0;
+  animation: fadeIn 1.5s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
 }
 </style>
 </head>
@@ -138,16 +183,11 @@ button {
   <div class="card">
     <h1>One Day… 💫</h1>
     <p>
-      There will be a tiny <strong>Podi Manuu 👧</strong><br><br>
-      With your smile and your sweetness…<br><br>
-
-      And a little <strong>Podi Mahin 👦</strong><br><br>
-      Protecting his akka and amma…<br><br>
-
-      And I’ll protect my whole world —<br>
-      You. Them. Us. 🌌
+      A tiny Podi Manuu 👧<br><br>
+      A little Podi Mahin 👦<br><br>
+      And us — building forever.
     </p>
-    <button onclick="finalScreen()">Forever Starts With Us ❤️</button>
+    <button onclick="screen3()">Keep Going ❤️</button>
   </div>
 </div>
 
@@ -158,10 +198,22 @@ button {
     <p>
       To build our home.<br><br>
       To hold you close.<br><br>
-      To watch Podi Manuu and Podi Mahin grow…<br><br>
+      To watch them grow.
+    </p>
+    <button onclick="screen4()">One Last Thing 🌌</button>
+  </div>
+</div>
 
-      With you by my side.<br><br>
-      Always. Forever.
+<!-- Screen 4 -->
+<div class="screen hidden" id="screen4">
+  <div class="card">
+    <div class="glow"></div>
+    <h1>My Promise ✨</h1>
+    <p>
+      <div class="fade-line" style="animation-delay:0.5s;">No matter what comes...</div><br>
+      <div class="fade-line" style="animation-delay:1.5s;">No matter how life changes...</div><br>
+      <div class="fade-line" style="animation-delay:2.5s;">I’ll always choose you.</div><br>
+      <div class="fade-line" style="animation-delay:3.5s;">Every single time. 💖</div>
     </p>
   </div>
 </div>
@@ -172,12 +224,17 @@ function nextScreen() {
   document.getElementById("screen2").classList.remove("hidden");
 }
 
-function finalScreen() {
+function screen3() {
   document.getElementById("screen2").classList.add("hidden");
   document.getElementById("screen3").classList.remove("hidden");
 }
 
-/* Stars generator */
+function screen4() {
+  document.getElementById("screen3").classList.add("hidden");
+  document.getElementById("screen4").classList.remove("hidden");
+}
+
+/* Stars */
 for (let i = 0; i < 100; i++) {
   const star = document.createElement("div");
   star.classList.add("star");
@@ -187,7 +244,16 @@ for (let i = 0; i < 100; i++) {
   document.body.appendChild(star);
 }
 
-/* Floating hearts generator */
+/* Shooting stars */
+setInterval(() => {
+  const star = document.createElement("div");
+  star.classList.add("shooting-star");
+  star.style.left = Math.random() * 50 + "vw";
+  document.body.appendChild(star);
+  setTimeout(() => star.remove(), 2000);
+}, 4000);
+
+/* Hearts */
 setInterval(() => {
   const heart = document.createElement("div");
   heart.classList.add("heart");
@@ -196,9 +262,8 @@ setInterval(() => {
   heart.style.fontSize = Math.random() * 20 + 15 + "px";
   heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
   document.body.appendChild(heart);
-
   setTimeout(() => heart.remove(), 7000);
-}, 500);
+}, 700);
 </script>
 
 </body>
