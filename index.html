@@ -104,6 +104,22 @@ button {
 /* Fade lines */
 .fade-line { opacity: 0; animation: fadeIn 1.5s forwards; }
 @keyframes fadeIn { to { opacity: 1; } }
+
+/* Heart above baby */
+.baby-heart {
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  font-size: 35px;
+  color: #ff5c8d;
+  transform: translateX(-50%);
+  animation: floatBabyHeart 2s ease-in-out infinite;
+}
+@keyframes floatBabyHeart {
+  0% { transform: translate(-50%,0) scale(0.8); opacity: 0; }
+  50% { transform: translate(-50%,-20px) scale(1.2); opacity: 1; }
+  100% { transform: translate(-50%,-40px) scale(0.8); opacity: 0; }
+}
 </style>
 </head>
 
@@ -142,35 +158,40 @@ button {
   </div>
 </div>
 
-<!-- Screen 4: Baby sketch with white face and black eyes -->
+<!-- Screen 4: Baby sketch with floating heart -->
 <div class="screen hidden" id="screen4">
   <div class="card">
     <div class="glow"></div>
-    <svg class="sketch" width="220" height="220" viewBox="0 0 220 220">
+
+    <!-- Baby Sketch -->
+    <svg class="sketch" width="180" height="180" viewBox="0 0 220 220">
       <!-- Head: white fill -->
-      <circle cx="110" cy="40" r="25" fill="white" stroke="white" stroke-width="2"/>
+      <circle cx="110" cy="40" r="20" fill="white" stroke="white" stroke-width="2"/>
       <!-- Eyes: black -->
-      <circle cx="100" cy="35" r="3" fill="black" stroke="black"/>
-      <circle cx="120" cy="35" r="3" fill="black" stroke="black"/>
+      <circle cx="102" cy="36" r="2" fill="black" stroke="black"/>
+      <circle cx="118" cy="36" r="2" fill="black" stroke="black"/>
       <!-- Smile -->
-      <path d="M100 50 Q110 60 120 50"/>
+      <path d="M102 50 Q110 58 118 50"/>
       <!-- Body -->
-      <path d="M110 65 Q100 100 110 130 Q120 100 110 65"/>
+      <path d="M110 60 Q100 90 110 120 Q120 90 110 60"/>
       <!-- Left arm -->
-      <path d="M110 70 Q70 90 80 110"/>
+      <path d="M110 65 Q80 85 85 100"/>
       <!-- Right arm -->
-      <path d="M110 70 Q150 90 140 110"/>
+      <path d="M110 65 Q140 85 135 100"/>
       <!-- Hands -->
-      <circle cx="80" cy="110" r="5"/>
-      <circle cx="140" cy="110" r="5"/>
+      <circle cx="85" cy="100" r="4"/>
+      <circle cx="135" cy="100" r="4"/>
       <!-- Left leg -->
-      <path d="M110 130 Q90 160 100 180"/>
+      <path d="M110 120 Q95 145 100 160"/>
       <!-- Right leg -->
-      <path d="M110 130 Q130 160 120 180"/>
+      <path d="M110 120 Q125 145 120 160"/>
       <!-- Feet -->
-      <circle cx="100" cy="180" r="5"/>
-      <circle cx="120" cy="180" r="5"/>
+      <circle cx="100" cy="160" r="4"/>
+      <circle cx="120" cy="160" r="4"/>
     </svg>
+
+    <!-- Floating heart above baby -->
+    <div class="baby-heart">💖</div>
 
     <h1>My Promise ✨</h1>
     <div class="fade-line" style="animation-delay:0.5s;">No matter what comes...</div><br>
@@ -186,13 +207,35 @@ function screen3() { document.getElementById("screen2").classList.add("hidden");
 function screen4() { document.getElementById("screen3").classList.add("hidden"); document.getElementById("screen4").classList.remove("hidden"); }
 
 /* Stars */
-for (let i=0;i<100;i++){const s=document.createElement("div");s.classList.add("star");s.style.width=s.style.height=Math.random()*3+1+"px";s.style.top=Math.random()*100+"vh";s.style.left=Math.random()*100+"vw";document.body.appendChild(s);}
+for (let i=0;i<100;i++){
+  const s=document.createElement("div");
+  s.classList.add("star");
+  s.style.width=s.style.height=Math.random()*3+1+"px";
+  s.style.top=Math.random()*100+"vh";
+  s.style.left=Math.random()*100+"vw";
+  document.body.appendChild(s);
+}
 
 /* Shooting stars */
-setInterval(()=>{const s=document.createElement("div");s.classList.add("shooting-star");s.style.left=Math.random()*50+"vw";document.body.appendChild(s);setTimeout(()=>s.remove(),2000);},4000);
+setInterval(()=>{
+  const s=document.createElement("div");
+  s.classList.add("shooting-star");
+  s.style.left=Math.random()*50+"vw";
+  document.body.appendChild(s);
+  setTimeout(()=>s.remove(),2000);
+},4000);
 
-/* Floating hearts */
-setInterval(()=>{const h=document.createElement("div");h.classList.add("heart");h.innerHTML="💖";h.style.left=Math.random()*100+"vw";h.style.fontSize=Math.random()*20+15+"px";h.style.animationDuration=(Math.random()*3+4)+"s";document.body.appendChild(h);setTimeout(()=>h.remove(),7000);},700);
+/* Floating hearts (random ones) */
+setInterval(()=>{
+  const h=document.createElement("div");
+  h.classList.add("heart");
+  h.innerHTML="💖";
+  h.style.left=Math.random()*100+"vw";
+  h.style.fontSize=Math.random()*20+15+"px";
+  h.style.animationDuration=(Math.random()*3+4)+"s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),7000);
+},700);
 </script>
 
 </body>
