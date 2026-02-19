@@ -110,63 +110,43 @@ button { margin-top: 20px; padding: 14px 35px; border-radius: 40px; border: none
   </div>
 </div>
 
-<!-- Screen 4: Family Sketch with hands + floating heart -->
+<!-- Screen 4: Family sketch holding hands + floating heart -->
 <div class="screen hidden" id="screen4">
   <div class="card">
     <div class="glow"></div>
-    <svg class="sketch" width="400" height="250" viewBox="0 0 400 250">
-      <!-- Baby: smaller, center -->
-      <circle cx="200" cy="120" r="15" fill="white" stroke="white"/>
-      <circle cx="195" cy="115" r="2" fill="black"/>
-      <circle cx="205" cy="115" r="2" fill="black"/>
-      <path d="M195 125 Q200 130 205 125" stroke="white"/>
-      <!-- Baby body -->
-      <path d="M200 135 Q190 160 200 180 Q210 160 200 135"/>
-      <!-- Baby hands connecting -->
-      <path d="M185 145 Q160 140 140 130"/> <!-- left hand to parent -->
-      <path d="M215 145 Q240 140 260 130"/> <!-- right hand to parent -->
-      <circle cx="140" cy="130" r="4"/>
-      <circle cx="260" cy="130" r="4"/>
-      <circle cx="185" cy="145" r="3"/>
-      <circle cx="215" cy="145" r="3"/>
-      <path d="M200 180 Q190 200 195 210"/>
-      <path d="M200 180 Q210 200 205 210"/>
-      <circle cx="195" cy="210" r="3"/>
-      <circle cx="205" cy="210" r="3"/>
+    <svg class="sketch" width="450" height="250" viewBox="0 0 450 250">
+      <!-- Baby: center -->
+      <circle cx="225" cy="130" r="15" fill="white" stroke="white"/>
+      <circle cx="220" cy="125" r="2" fill="black"/>
+      <circle cx="230" cy="125" r="2" fill="black"/>
+      <path d="M220 135 Q225 140 230 135" stroke="white"/>
+      <path d="M225 145 Q215 165 225 180 Q235 165 225 145"/>
       
       <!-- Left parent -->
-      <circle cx="90" cy="110" r="25" fill="white" stroke="white"/>
-      <circle cx="80" cy="105" r="3" fill="black"/>
-      <circle cx="100" cy="105" r="3" fill="black"/>
-      <path d="M80 120 Q90 130 100 120"/>
-      <path d="M90 135 Q80 170 90 200 Q100 170 90 135"/>
-      <path d="M90 140 Q70 160 80 180"/>
-      <path d="M90 140 Q110 160 100 180"/>
-      <circle cx="80" cy="180" r="4"/>
-      <circle cx="100" cy="180" r="4"/>
-      <path d="M90 200 Q80 230 85 240"/>
-      <path d="M90 200 Q100 230 95 240"/>
-      <circle cx="85" cy="240" r="4"/>
-      <circle cx="95" cy="240" r="4"/>
+      <circle cx="120" cy="110" r="25" fill="white" stroke="white"/>
+      <circle cx="110" cy="105" r="3" fill="black"/>
+      <circle cx="130" cy="105" r="3" fill="black"/>
+      <path d="M110 120 Q120 130 130 120"/>
+      <path d="M120 135 Q100 170 120 200 Q140 170 120 135"/>
+      <!-- Left parent hand to baby -->
+      <path d="M145 145 Q150 140 210 140"/>
+      <circle cx="145" cy="145" r="3"/>
+      <circle cx="210" cy="140" r="3"/>
       
       <!-- Right parent -->
-      <circle cx="310" cy="110" r="25" fill="white" stroke="white"/>
-      <circle cx="300" cy="105" r="3" fill="black"/>
+      <circle cx="330" cy="110" r="25" fill="white" stroke="white"/>
       <circle cx="320" cy="105" r="3" fill="black"/>
-      <path d="M300 120 Q310 130 320 120"/>
-      <path d="M310 135 Q300 170 310 200 Q320 170 310 135"/>
-      <path d="M310 140 Q290 160 300 180"/>
-      <path d="M310 140 Q330 160 320 180"/>
-      <circle cx="300" cy="180" r="4"/>
-      <circle cx="320" cy="180" r="4"/>
-      <path d="M310 200 Q300 230 305 240"/>
-      <path d="M310 200 Q320 230 315 240"/>
-      <circle cx="305" cy="240" r="4"/>
-      <circle cx="315" cy="240" r="4"/>
+      <circle cx="340" cy="105" r="3" fill="black"/>
+      <path d="M320 120 Q330 130 340 120"/>
+      <path d="M330 135 Q310 170 330 200 Q350 170 330 135"/>
+      <!-- Right parent hand to baby -->
+      <path d="M305 145 Q300 140 240 140"/>
+      <circle cx="305" cy="145" r="3"/>
+      <circle cx="240" cy="140" r="3"/>
     </svg>
 
     <!-- Floating heart above baby -->
-    <div class="heart" style="left:190px; top:50px;">💖</div>
+    <div class="heart" style="left:215px; top:80px;">💖</div>
 
     <h1>Our Little Family ✨</h1>
     <div class="fade-line" style="animation-delay:0.5s;">Always together...</div><br>
